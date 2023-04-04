@@ -34,10 +34,7 @@ enum custom_layers {
   _LOWER,
   _RAISE,
   _FUNC,
-<<<<<<< HEAD
   _NUM,
-=======
->>>>>>> d578c6850f (Init custom keymap)
 };
 
 // For _QWERTY layer
@@ -47,27 +44,21 @@ enum custom_layers {
 #define GUI_ENT  GUI_T(KC_ENT)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
-<<<<<<< HEAD
 #define OSM_SFT  OSM(MOD_LSFT)
 #define TG_NUM   TG(_NUM)
-=======
-#define OSM_SFT  OSM(MOD_LSFT) 
->>>>>>> d578c6850f (Init custom keymap)
 
 
 // For _RAISE layer
 #define CTL_ESC  LCTL_T(KC_ESC)
+#define KC_COPY LCTL(KC_C)
+#define KC_PSTE LCTL(KC_V)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_DEL  ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-<<<<<<< HEAD
  OSM(MOD_LALT),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_QUOT ,TG_NUM  ,
-=======
- OSM(MOD_LALT),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_QUOT ,OSM_AGR ,
->>>>>>> d578c6850f (Init custom keymap)
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
  OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -90,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, KC_DEL , XXXXXXX, KC_UNDS, KC_PLUS, KC_PGUP,                      XXXXXXX, XXXXXXX, XXXXXXX, KC_BSLS, KC_PIPE,_______ ,
+      _______, KC_DEL , XXXXXXX, KC_UNDS, KC_PLUS, KC_PGUP,                      XXXXXXX, XXXXXXX, KC_UP,   KC_BSLS, KC_PIPE,_______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_HOME, KC_END , KC_MINS, KC_EQL , KC_PGDN,                      KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_APP ,_______ ,
+      _______, KC_HOME, KC_END , KC_MINS, KC_EQL , KC_PGDN,                      KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT, KC_APP ,_______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_LT  , KC_GT  , KC_COPY, KC_PSTE, KC_SCLN,                      KC_MPLY, KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU,_______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -110,7 +101,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, FUNC   , XXXXXXX
                                       //`--------------------------'  `--------------------------'
-<<<<<<< HEAD
   ),
 
   [_NUM] = LAYOUT(
@@ -123,8 +113,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_0,   KC_DOT,  KC_ENT,     KC_BSPC, KC_SPC, XXXXXXX
                                       //`--------------------------'  `--------------------------'
-=======
->>>>>>> d578c6850f (Init custom keymap)
   )
 };
 
@@ -141,27 +129,21 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
-<<<<<<< HEAD
         case _NUM:
             rgb_matrix_sethsv(HSV_ORANGE);
-=======
-        case _QWERTY:
-            rgb_matrix_sethsv(HSV_CYAN);
->>>>>>> d578c6850f (Init custom keymap)
             break;
         case _LOWER:
-            rgb_matrix_sethsv(HSV_GOLDENROD);
+            rgb_matrix_sethsv(HSV_GREEN);
             break;
         case _RAISE:
             rgb_matrix_sethsv(HSV_PURPLE);
             break;
+        case _FUNC:
+            rgb_matrix_sethsv(HSV_CHARTREUSE);
+            break;
         default: // for any other layers, or the default layer
-            rgb_matrix_sethsv(HSV_CYAN);
+            rgb_matrix_sethsv(HSV_TEAL);
             break;
     }
   return state;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d578c6850f (Init custom keymap)
